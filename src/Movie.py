@@ -1,62 +1,37 @@
 """
-hello.py
+Movie.py
 ====================================
 This is an example file with correct docstring examples
 
-| Author: Seth McNeill
-| Date: 2025 September 07
+| Author: Bailey Klote
+| Date: 2025 December 1
 """
 
-class SayHello:
-    """
-    Base class example
-    
-    This class provides an example to work from
-    
-    Parameters
-    ----------
-    name : str
-        The user's name
-    
-    Attributes
-    ----------
-    name : str
-        The pet's name
-        
-    Examples
-    --------
-    >>> hello = SayHello("Bob")
-    >>> hello.greet(', welcome!)
-    Hello Bob, welcome!
-    """
-    
-    def __init__(self, name):
-        """
-        Initialize a new SayHello instance.
-        
-        Parameters
-        ----------
-        name : str
-            The user's name
-        """
-        self.name = name
-   
-    def greet(self, extraText):
-        """
-        Clamp a stat value between minimum and maximum bounds.
-        
-        Parameters
-        ----------
-        extraText : str
-            Text to add after the hello username
-            
-        Returns
-        -------
-        int
-            An integer as an example of returning a value
-        """
-        print(f'Hello {self.name}{extraText}')
-        return len(self.name)
+import pandas as pd
+
+# Load ratings
+ratings = pd.read_csv("ml-100k/u.data", sep="\t",
+                      names=["user_id", "movie_id", "rating", "timestamp"])
+
+# Load movies
+movies = pd.read_csv("ml-100k/u.item", sep="|", encoding="latin-1", header=None)
+
+# Load users
+users = pd.read_csv("ml-100k/u.user", sep="|",
+                    names=["user_id", "age", "gender", "occupation", "zip_code"])
+
+# Load genres
+genres = pd.read_csv("ml-100k/u.genre", sep="|", names=["genre", "id"], encoding="latin-1")
+
+# Quick check: print first 5 rows
+print("Ratings:\n", ratings.head())
+print("Movies:\n", movies.head())
+print("Users:\n", users.head())
+print("Genres:\n", genres.head())
+
+
+
+
 
 
 if __name__ == '__main__':
